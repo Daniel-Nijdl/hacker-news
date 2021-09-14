@@ -3,41 +3,34 @@ import { useArticleContext } from "../util/context";
 // import { Link } from "react-router-dom";
 
 const Articles = () => {
-  const { articles, loading } = useArticleContext();
-
-
+  const { loading, hits, removeStory } = useArticleContext();
 
   if (loading) {
     return <div className="loading"></div>;
   }
   return (
     <section className="articles">
-      {articles.map((article) => {
-        const {
-          id,
-          author,
-          title,
-          url,
-          points,
-          num_comments: comments,
-        } = article;
+      {hits.map((hit) => {
+        const { author, objectId: id, title, url, points, num_comments: comments } = hit;
 
         return (
           // <Link to={`/articles/${id}`} key={id} className="article">
-          <article>
-
-
+          <article key={id}>
             <div className="article-info">
               <h4 className="title">{title}</h4>
               <p>{`${points} points by ${author} | ${comments} comments`}</p>
               <a href={url} className="read-more">
                 Read More
               </a>
-              <button className="remove">Remove</button>
+              <button
+                className="remove"
+                onClick={removeStory}
+              >
+                Remove
+              </button>
             </div>
           </article>
           // </Link>
-
         );
       })}
     </section>

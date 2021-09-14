@@ -1,28 +1,28 @@
-import { useState, useEffect } from "react";
-const API_ENDPOINT = "http://hn.algolia.com/api/v1/search?";
+// import { useState, useEffect } from "react";
 
-export const useFetch = (searchQuery) => {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState({ show: false, msg: "" });
-  const [articles, setArticles] = useState([]);
 
-  const fetchArticles = async (url) => {
-    setLoading(true);
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
+// export const useFetch = (searchQuery) => {
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState({ show: false, msg: "" });
+//   const [articles, setArticles] = useState([]);
 
-      setArticles(data.hits);
-      setLoading(false);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+//   const fetchArticles = async (url) => {
+//     setLoading(true);
+//     try {
+//       const response = await fetch(url);
+//       const data = await response.json();
 
-  useEffect(() => {
-    console.log(`${API_ENDPOINT}${searchQuery}`);
-    fetchArticles(`${API_ENDPOINT}${searchQuery}`);
-  }, [searchQuery]);
+//       setArticles(data.hits);
+//       setLoading(false);
+//     } catch (error) {
+//       console.error(error);
+//     }
+//   };
 
-  return { loading, error, articles };
-};
+//   useEffect(() => {
+//     console.log(`${API_ENDPOINT}${searchQuery}`);
+//     fetchArticles(`${API_ENDPOINT}${searchQuery}`);
+//   }, [searchQuery]);
+
+//   return { loading, error, articles };
+// };
