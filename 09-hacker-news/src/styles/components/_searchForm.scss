@@ -2,28 +2,42 @@
 @use '../util/variables' as *;
 @use '../util/mixins' as *;
 
-.search-form{
+.search-form {
   width: 90vw;
   max-width: $max-width;
   margin: 0 auto;
   margin-top: 5rem;
-  margin-bottom: 3rem;
-  .form-input{
+  margin-bottom: 1rem;
+  text-align: left;
+  h2{
+    font-size: 2rem;
+    margin: 0 auto;
+  }
+  .form-input {
     width: 100%;
     border: transparent;
     max-width: $fixed-width;
-    background: $white;
+    background: transparent;
     padding: 1rem;
     font-size: 1rem;
-    border-radius: $radius;
-    color: $grey-3;
+    color: $black;
     letter-spacing: $spacing;
     margin-top: 1rem;
+    border-bottom: 3px $grey-7 solid;
+    text-transform: uppercase;
   }
-  .error{
+  .error {
     color: $red-dark;
     text-transform: capitalize;
     padding-top: 0.5rem;
     letter-spacing: $spacing;
+  }
+}
+
+@include tablet{
+  .search-form{
+    h2{
+      font-size: 2.5rem;
+    }
   }
 }

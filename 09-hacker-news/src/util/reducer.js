@@ -13,14 +13,35 @@ export const reducer = (state, action) => {
         hits: action.payload.hits,
       };
     }
-    case "HANDLE_SEARCH" : return{...state, query: action.payload, page: 0}
-
+    case "HANDLE_SEARCH": {
+      return { ...state, query: action.payload, page: 0 };
+    }
     case "REMOVE_STORY": {
-      const newHits = state.hits.filter((hit) => hit.id !== action.payload);
+      const newHits = state.hits.filter(
+        (hit) => hit.objectID !== action.payload
+      );
       return {
         ...state,
-        hits: newHits
+        hits: newHits,
       };
+    }
+    case "HANDLE_PAGE": {
+      let newPage = state.page
+      if (action.payload === "inc") {
+        newPage = state.page + 1;
+        if (newPage + 1 > state.nbPages) {
+          newPage = 0;
+        }
+      } else {
+        newPage = state.page - 1;
+        if (newPage < 0) {
+          newPage = state.nbPages - 1;
+        }
+      }
+      return {
+        ...state,
+        page: newPage,
+      }
     }
   }
 };

@@ -1,11 +1,13 @@
 import React from 'react'
-// import SearchForm from "../Components/SearchForm";
+import SearchForm from "../Components/SearchForm";
 import Articles from "../Components/Articles";
+import Buttons from '../Components/Buttons'
 
 const Home = () => {
   return (
-    <main>
-      {/* <SearchForm /> */}
+    <main className="mainThing">
+      <SearchForm />
+      <Buttons />
       <Articles />
     </main>
   );

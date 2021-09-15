@@ -31,19 +31,23 @@ export const ArticleProvider = ({ children }) => {
   };
 
   const removeStory = (id) => {
-    dispatch({type: "REMOVE_STORY", payload: id});
-  }
+    dispatch({ type: "REMOVE_STORY", payload: id });
+  };
 
-  const pageForward = (id) => {
-    dispatch({type: "PAGE_FORWARD", payload: id});
-  }
+  const handleSearch = (query) => {
+    dispatch({ type: "HANDLE_SEARCH", payload: query });
+  };
+
+  const handlePage = (value) => {
+    dispatch({ type: "HANDLE_PAGE", payload: value });
+  };
 
   useEffect(() => {
     fetchHits(`${API_ENDPOINT}query=${state.query}&page=${state.page}&`);
   }, [state.query, state.page]);
 
   return (
-    <ArticleContext.Provider value={{ ...state, pageForward, removeStory}}>
+    <ArticleContext.Provider value={{ ...state, removeStory, handleSearch, handlePage }}>
       {children}
     </ArticleContext.Provider>
   );
