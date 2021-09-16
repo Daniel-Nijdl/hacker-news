@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer, useContext } from "react";
 import { reducer } from "./reducer";
 
-const API_ENDPOINT = "http://hn.algolia.com/api/v1/search?";
+const API_ENDPOINT = "https://hn.algolia.com/api/v1/search?";
 
 //the state object that holds the values for the context
 //this is used by the reducer
